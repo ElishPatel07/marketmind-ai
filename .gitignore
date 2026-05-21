@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+.venv/
+venv/
+
+# Environment vars
+.env
+
+# Logs
+logs/
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VSCode
+.vscode/
+
+# Mac
+.DS_Store
+
+# Data
+data/raw/*
+data/processed/*
+
+# ML models
+models/
+
+# Cache
+.cache/
+
+# Pytest
+.pytest_cache/
+
+# Mypy
+.mypy_cache/
