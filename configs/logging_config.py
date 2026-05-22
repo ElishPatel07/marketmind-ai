@@ -7,13 +7,10 @@ logger.remove()
 logger.add(
     sys.stdout,
     format=(
-        "{time:YYYY-MM-DD HH:mm:ss} | "
-        "{level} | "
-        "{name}:{function}:{line} | "
-        "{message}"
+        "{time:YYYY-MM-DD HH:mm:ss} | {level} | {name}:{function}:{line} | {message}"
     ),
     level="INFO",
-    colorize=True
+    colorize=True,
 )
 
 logger.add(
@@ -21,5 +18,5 @@ logger.add(
     rotation="10 MB",
     retention="10 days",
     compression="zip",
-    level="INFO"
+    level="INFO",
 )
