@@ -2,8 +2,10 @@ version: "3.9"
 
 services:
 
+  # PostgreSQL database service
   postgres:
     image: postgres:16
+
     container_name: marketmind-postgres
 
     environment:
@@ -14,31 +16,41 @@ services:
     ports:
       - "5432:5432"
 
+    # Persistent volume prevents data loss
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+    # Health checks allow orchestration systems
+    # to verify service readiness
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+
       interval: 10s
       timeout: 5s
       retries: 5
 
+  # Redis cache service
   redis:
     image: redis:7
+
     container_name: marketmind-redis
 
     ports:
       - "6379:6379"
 
+    # Redis persistence volume
     volumes:
       - redis_data:/data
 
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
+
       interval: 10s
       timeout: 5s
       retries: 5
 
+
+# Named Docker volumes
 volumes:
   postgres_data:
   redis_data:

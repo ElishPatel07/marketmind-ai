@@ -33,6 +33,30 @@ The goal is to simulate a real world AI platform similar to internal fintech res
 
 ---
 
+## Tech Stack
+
+| Category | Tools |
+|---|---|
+| Backend | FastAPI |
+| Database | PostgreSQL |
+| ORM | SQLAlchemy 2.0 |
+| Database Migrations | Alembic |
+| Async DB Driver | asyncpg |
+| Cache | Redis |
+| Vector Database | ChromaDB |
+| NLP | Transformers, Sentence Transformers |
+| LLM | Ollama, Groq |
+| Infrastructure | Docker, Docker Compose |
+| MLOps | MLflow |
+| Monitoring | Prometheus, Grafana |
+| Logging | Loguru |
+| Testing | Pytest |
+| Linting | Ruff |
+| Configuration | Pydantic Settings |
+| CI/CD | GitHub Actions |
+
+---
+
 ## Current Project Status
 
 ### Completed
@@ -66,6 +90,15 @@ The goal is to simulate a real world AI platform similar to internal fintech res
 - Environment driven container setup
 - Infrastructure health checks
 - Local infrastructure orchestration
+
+#### Phase 1D
+- Async PostgreSQL integration
+- SQLAlchemy ORM setup
+- Alembic migration system
+- Async database sessions
+- Database dependency injection
+- Initial financial news schema
+- Database connectivity health checks
 
 ---
 

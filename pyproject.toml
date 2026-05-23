@@ -1,8 +1,17 @@
+# Centralized Python tooling configuration
+
 [tool.ruff]
+
+# Maximum line length
 line-length = 88
+
+# Target Python version
 target-version = "py311"
 
+
 [tool.ruff.lint]
+
+# Enabled linting rules
 select = [
     "E",
     "F",
@@ -11,15 +20,21 @@ select = [
     "UP"
 ]
 
+# Ignore line length warnings
 ignore = [
-    "E501"
+    "E501",
+    "B008"
 ]
 
+
 [tool.pytest.ini_options]
+
+# Add project root to Python path
 pythonpath = [
     "."
 ]
 
+# Location of test files
 testpaths = [
     "tests"
 ]
