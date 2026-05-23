@@ -1,27 +1,35 @@
 # MarketMind AI
 
-Production grade Financial Market Intelligence Agent built with FastAPI, NLP pipelines, RAG architecture, vector search, and MLOps practices.
+Production grade Financial Market Intelligence Agent built with FastAPI, NLP pipelines, RAG architecture, vector search, Docker infrastructure, and MLOps engineering practices.
+
+---
 
 ## Overview
 
-MarketMind AI is an end to end AI powered financial intelligence platform designed to aggregate, process, analyze, and retrieve market information from multiple financial data sources.
+MarketMind AI is an end to end AI powered financial intelligence platform designed to aggregate, process, analyze, retrieve, and summarize financial information from multiple data sources.
 
-The platform combines:
+The system combines:
 - Financial news ingestion
 - Market data pipelines
 - NLP sentiment analysis
 - Retrieval Augmented Generation (RAG)
-- Vector search
-- AI powered research assistance
+- Semantic vector search
+- AI powered market research
 - Production grade backend engineering
+- Containerized infrastructure
+
+The goal is to simulate a real world AI platform similar to internal fintech research systems used by hedge funds, trading firms, and financial startups.
+
+---
 
 ## Goals
 
-- Build a scalable financial intelligence platform
-- Implement production ready ML engineering workflows
-- Practice real world AI system design
-- Demonstrate MLOps and backend engineering skills
-- Create an industry style portfolio project
+- Build a scalable AI financial intelligence platform
+- Practice production grade ML engineering
+- Implement real world backend architecture
+- Learn MLOps and infrastructure engineering
+- Demonstrate industry style software engineering practices
+- Build a portfolio project suitable for ML Engineer and AI Engineer interviews
 
 ---
 
@@ -50,53 +58,32 @@ The platform combines:
 - API router structure
 - Health check endpoint
 
----
-
-## Planned Features
-
-### Data Ingestion
-- Financial news ingestion
-- SEC filing ingestion
-- Reddit finance ingestion
-- Market price ingestion
-
-### NLP and AI
-- Financial sentiment analysis
-- Embedding pipelines
-- Semantic search
-- RAG question answering
-- Financial summarization
-- Event extraction
-
-### Backend and Infrastructure
-- FastAPI microservices
-- PostgreSQL integration
-- Redis caching
-- ChromaDB vector database
-- Docker infrastructure
-- MLflow experiment tracking
-- Monitoring and observability
-
-### Dashboard
-- Portfolio analytics
-- Market intelligence dashboard
-- Sentiment visualization
-- AI research assistant UI
+#### Phase 1C
+- Docker Compose infrastructure
+- PostgreSQL container
+- Redis container
+- Persistent Docker volumes
+- Environment driven container setup
+- Infrastructure health checks
+- Local infrastructure orchestration
 
 ---
 
-## High Level Architecture
+## Architecture
 
 ```text
-                    Frontend Dashboard
-                            │
-                            ▼
-                     FastAPI Gateway
-                            │
-        ┌───────────────────┼───────────────────┐
-        │                   │                   │
-        ▼                   ▼                   ▼
-   RAG Service         NLP Service      Ingestion Service
-        │                   │                   │
-        ▼                   ▼                   ▼
-   ChromaDB            PostgreSQL           Redis
+                           Frontend Dashboard
+                                   │
+                                   ▼
+                            FastAPI Gateway
+                                   │
+        ┌──────────────────────────┼──────────────────────────┐
+        │                          │                          │
+        ▼                          ▼                          ▼
+   RAG Service               NLP Service            Ingestion Service
+        │                          │                          │
+        ▼                          ▼                          ▼
+   ChromaDB                  PostgreSQL                  Redis
+        │
+        ▼
+   Embedding Pipelines
