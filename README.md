@@ -114,6 +114,13 @@ The goal is to simulate a real world AI platform similar to internal fintech res
 - SQLAlchemy async query layer
 - Centralized persistence logic
 
+#### Phase 1E Part 3
+- Service layer architecture
+- Business workflow abstraction
+- Repository orchestration layer
+- Layered backend architecture
+- Service based API flow
+
 ---
 
 ## Architecture

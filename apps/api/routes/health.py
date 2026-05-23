@@ -14,6 +14,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from apps.db.session import get_db
 from apps.repositories import NewsRepository
 from apps.schemas.news import NewsArticleCreate
+from apps.services.news_service import NewsService
 
 # Router instance
 router = APIRouter()
@@ -51,6 +52,8 @@ async def test_repository(
 
     repository = NewsRepository(db)
 
-    article = await repository.create_article(payload)
+    service = NewsService(repository)
+
+    article = await service.create_article(payload)
 
     return article
