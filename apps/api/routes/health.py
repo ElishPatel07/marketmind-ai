@@ -12,9 +12,6 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from apps.db.session import get_db
-from apps.repositories import NewsRepository
-from apps.schemas.news import NewsArticleCreate
-from apps.services.news_service import NewsService
 
 # Router instance
 router = APIRouter()
@@ -30,30 +27,3 @@ async def health_check(db: AsyncSession = Depends(get_db)):  # noqa: B008
     await db.execute(text("SELECT 1"))
 
     return {"status": "healthy", "database": "connected"}
-
-
-@router.post("/validate-news")
-async def validate_news(payload: NewsArticleCreate):
-    """
-    Temporary schema validation route.
-    """
-
-    return payload
-
-
-@router.post("/test-repository")
-async def test_repository(
-    payload: NewsArticleCreate,
-    db: AsyncSession = Depends(get_db),
-):
-    """
-    Temporary repository validation route.
-    """
-
-    repository = NewsRepository(db)
-
-    service = NewsService(repository)
-
-    article = await service.create_article(payload)
-
-    return article

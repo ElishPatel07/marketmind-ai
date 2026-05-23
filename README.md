@@ -57,6 +57,18 @@ The goal is to simulate a real world AI platform similar to internal fintech res
 
 ---
 
+## API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/` | Root API endpoint |
+| GET | `/health` | API and database connectivity health check |
+| POST | `/news/` | Create financial news article |
+| GET | `/news/{article_id}` | Retrieve article by ID |
+| GET | `/news/` | List all financial news articles |
+
+---
+
 ## Current Project Status
 
 ### Completed
@@ -120,6 +132,13 @@ The goal is to simulate a real world AI platform similar to internal fintech res
 - Repository orchestration layer
 - Layered backend architecture
 - Service based API flow
+
+#### Phase 1E Part 4
+- Production CRUD API architecture
+- Modular FastAPI route structure
+- Response model validation
+- Structured API error handling
+- Feature based route organization
 
 ---
 

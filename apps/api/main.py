@@ -15,6 +15,7 @@ from fastapi import FastAPI
 
 # Health check router
 from apps.api.routes.health import router as health_router
+from apps.api.routes.news import router as news_router
 
 # Centralized logging system
 from configs.logging_config import logger
@@ -44,6 +45,7 @@ async def startup_event():
 
 # Register API routers
 app.include_router(health_router)
+app.include_router(news_router)
 
 
 @app.get("/")
