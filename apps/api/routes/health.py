@@ -12,6 +12,7 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from apps.db.session import get_db
+from apps.repositories import NewsRepository
 from apps.schemas.news import NewsArticleCreate
 
 # Router instance
@@ -37,3 +38,19 @@ async def validate_news(payload: NewsArticleCreate):
     """
 
     return payload
+
+
+@router.post("/test-repository")
+async def test_repository(
+    payload: NewsArticleCreate,
+    db: AsyncSession = Depends(get_db),
+):
+    """
+    Temporary repository validation route.
+    """
+
+    repository = NewsRepository(db)
+
+    article = await repository.create_article(payload)
+
+    return article

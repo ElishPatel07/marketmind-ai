@@ -107,6 +107,13 @@ The goal is to simulate a real world AI platform similar to internal fintech res
 - API data contracts
 - Schema based validation pipelines
 
+#### Phase 1E Part 2
+- Repository pattern architecture
+- Async CRUD repository layer
+- Reusable database access abstraction
+- SQLAlchemy async query layer
+- Centralized persistence logic
+
 ---
 
 ## Architecture
