@@ -2,7 +2,7 @@
 Production routes for financial news APIs.
 """
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from apps.db.session import get_db
@@ -59,13 +59,6 @@ async def get_news_article(
     service = NewsService(repository)
 
     article = await service.get_article(article_id)
-
-    # Return 404 if article does not exist
-    if article is None:
-        raise HTTPException(
-            status_code=404,
-            detail="Article not found",
-        )
 
     return article
 
