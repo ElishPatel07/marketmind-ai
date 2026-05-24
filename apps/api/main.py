@@ -16,15 +16,9 @@ from fastapi import FastAPI
 # Health check router
 from apps.api.routes.health import router as health_router
 from apps.api.routes.news import router as news_router
-from apps.core.handlers import (
-    register_exception_handlers,
-)
-from apps.core.middleware import (
-    RequestContextMiddleware,
-)
-
-# Centralized logging system
-from configs.logging_config import logger
+from apps.core.handlers import register_exception_handlers
+from apps.core.logging import configure_logging
+from apps.core.middleware import RequestContextMiddleware
 
 # Typed application settings loaded from environment variables
 from configs.settings import settings
@@ -33,6 +27,8 @@ from configs.settings import settings
 app = FastAPI(title=settings.APP_NAME, version=settings.APP_VERSION)
 
 app.add_middleware(RequestContextMiddleware)
+
+logger = configure_logging()
 
 register_exception_handlers(app)
 

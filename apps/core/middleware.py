@@ -12,9 +12,8 @@ import time
 import uuid
 
 from fastapi import Request
-from starlette.middleware.base import (
-    BaseHTTPMiddleware,
-)
+from loguru import logger
+from starlette.middleware.base import BaseHTTPMiddleware
 
 
 class RequestContextMiddleware(BaseHTTPMiddleware):
@@ -40,6 +39,10 @@ class RequestContextMiddleware(BaseHTTPMiddleware):
         # Record request start time
         start_time = time.perf_counter()
 
+        request_logger = logger.bind(request_id=request_id)
+
+        request_logger.info(f"Incoming request: {request.method} {request.url.path}")
+
         # Process downstream request
         response = await call_next(request)
 
@@ -50,5 +53,12 @@ class RequestContextMiddleware(BaseHTTPMiddleware):
         response.headers["X-Request-ID"] = request_id
 
         response.headers["X-Process-Time"] = f"{process_time:.4f}"
+
+        request_logger.info(
+            f"Completed request: "
+            f"{request.method} {request.url.path} "
+            f"status={response.status_code} "
+            f"duration={process_time:.4f}s"
+        )
 
         return response
