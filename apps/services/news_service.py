@@ -15,6 +15,9 @@ Repositories handle persistence.
 Services handle workflows.
 """
 
+from apps.core.exceptions import (
+    ArticleNotFoundException,
+)
 from apps.repositories.news_repository import NewsRepository
 from apps.schemas.news import (
     NewsArticleCreate,
@@ -68,6 +71,9 @@ class NewsService:
         """
 
         article = await self.repository.get_article_by_id(article_id)
+
+        if article is None:
+            raise ArticleNotFoundException(f"Article with ID {article_id} not found")
 
         return article
 

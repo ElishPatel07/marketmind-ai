@@ -16,6 +16,9 @@ from fastapi import FastAPI
 # Health check router
 from apps.api.routes.health import router as health_router
 from apps.api.routes.news import router as news_router
+from apps.core.handlers import (
+    register_exception_handlers,
+)
 
 # Centralized logging system
 from configs.logging_config import logger
@@ -25,6 +28,8 @@ from configs.settings import settings
 
 # Initialize FastAPI application
 app = FastAPI(title=settings.APP_NAME, version=settings.APP_VERSION)
+
+register_exception_handlers(app)
 
 
 @app.on_event("startup")

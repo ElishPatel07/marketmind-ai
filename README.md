@@ -140,6 +140,13 @@ The goal is to simulate a real world AI platform similar to internal fintech res
 - Structured API error handling
 - Feature based route organization
 
+#### Phase 1F Part 1
+- Custom exception architecture
+- Centralized FastAPI exception handlers
+- Structured API error responses
+- Service level domain exceptions
+- Global error handling middleware
+
 ---
 
 ## Architecture
