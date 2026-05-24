@@ -147,6 +147,13 @@ The goal is to simulate a real world AI platform similar to internal fintech res
 - Service level domain exceptions
 - Global error handling middleware
 
+#### Phase 1F Part 2
+- FastAPI middleware architecture
+- Request correlation ID system
+- Request lifecycle tracing
+- Response timing headers
+- Request scoped context propagation
+
 ---
 
 ## Architecture
