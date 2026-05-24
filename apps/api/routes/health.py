@@ -7,7 +7,7 @@ Health endpoints validate:
 - infrastructure readiness
 """
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -18,7 +18,7 @@ router = APIRouter()
 
 
 @router.get("/health")
-async def health_check(db: AsyncSession = Depends(get_db)):  # noqa: B008
+async def health_check(request: Request, db: AsyncSession = Depends(get_db)):  # noqa: B008
     """
     Validate API and database connectivity.
     """
@@ -26,4 +26,8 @@ async def health_check(db: AsyncSession = Depends(get_db)):  # noqa: B008
     # Simple database connectivity test
     await db.execute(text("SELECT 1"))
 
-    return {"status": "healthy", "database": "connected"}
+    return {
+        "status": "healthy",
+        "database": "connected",
+        "request_id": request.state.request_id,
+    }

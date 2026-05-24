@@ -19,6 +19,9 @@ from apps.api.routes.news import router as news_router
 from apps.core.handlers import (
     register_exception_handlers,
 )
+from apps.core.middleware import (
+    RequestContextMiddleware,
+)
 
 # Centralized logging system
 from configs.logging_config import logger
@@ -28,6 +31,8 @@ from configs.settings import settings
 
 # Initialize FastAPI application
 app = FastAPI(title=settings.APP_NAME, version=settings.APP_VERSION)
+
+app.add_middleware(RequestContextMiddleware)
 
 register_exception_handlers(app)
 
