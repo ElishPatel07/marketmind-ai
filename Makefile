@@ -7,6 +7,10 @@ run:
 lint:
 	ruff check .
 
+# Run Ruff linting checks and automatically fix issues
+fix:
+	ruff check . --fix
+
 
 # Format codebase using Ruff formatter
 format:
