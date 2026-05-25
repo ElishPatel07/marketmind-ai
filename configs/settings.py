@@ -25,8 +25,9 @@ class Settings(BaseSettings):
     """
 
     APP_NAME: str = "MarketMind AI"
+    PROJECT_NAME: str = "MarketMind AI"
     APP_VERSION: str = "0.1.0"
-    ENVIRONMENT: str = "development"
+    APP_ENV: str = "development"
 
     API_HOST: str = "127.0.0.1"
     API_PORT: int = 8000

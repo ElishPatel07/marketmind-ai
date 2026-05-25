@@ -45,7 +45,7 @@ async def startup_event():
     - cache warmup
     - background scheduler initialization
     """
-
+    logger.info(f"Application environment: {settings.APP_ENV}")
     logger.info(f"JSON logging enabled: {settings.LOG_JSON_FORMAT}")
 
 

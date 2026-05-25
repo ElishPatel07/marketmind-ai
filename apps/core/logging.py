@@ -34,7 +34,7 @@ def configure_logging():
     # Console logger configuration
     patched_logger.add(
         sys.stdout,
-        level="INFO",
+        level=("DEBUG" if settings.APP_ENV == "development" else "INFO"),
         format=(
             "{time:YYYY-MM-DD HH:mm:ss} | {level} | {extra[request_id]} | {message}"
         ),

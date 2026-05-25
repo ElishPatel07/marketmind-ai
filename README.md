@@ -69,6 +69,26 @@ The goal is to simulate a real world AI platform similar to internal fintech res
 
 ---
 
+## Environment Configuration
+
+The application uses typed environment based configuration.
+
+Environment variables are validated through Pydantic settings.
+
+### Supported Environments
+
+- development
+- staging
+- production
+
+### Configuration File
+
+Create a `.env` file using:
+
+```bash
+cp .env.example .env
+```
+---
 ## Current Project Status
 
 ### Completed
@@ -174,6 +194,13 @@ The goal is to simulate a real world AI platform similar to internal fintech res
 - Environment aware logging configuration
 - Production log serialization
 - Semantic API access logging
+
+#### Phase 1H Part 1
+- Typed configuration architecture
+- Environment aware runtime settings
+- Centralized application settings management
+- Deployment safe configuration validation
+- Environment specific logging behavior
 
 ---
 
