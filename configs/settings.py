@@ -45,6 +45,7 @@ class Settings(BaseSettings):
     REDIS_PORT: int
 
     DATABASE_URL: str
+    TEST_DATABASE_URL: str
 
     CHROMA_DB_DIR: str
 

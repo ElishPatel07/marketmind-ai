@@ -1,6 +1,6 @@
+import os
 from logging.config import fileConfig
 
-from apps.db.models.user import User  # noqa: F401
 from sqlalchemy import engine_from_config, pool
 
 from alembic import context
@@ -11,6 +11,28 @@ from apps.db.models.news_article import NewsArticle  # noqa: F401
 
 # Alembic configuration object
 config = context.config
+
+# Dynamically select database URL
+database_url = os.getenv(
+    "TEST_DATABASE_URL",
+    os.getenv("DATABASE_URL"),
+)
+
+# Alembic requires sync driver
+database_url = database_url.replace(
+    "postgresql+asyncpg",
+    "postgresql",
+)
+
+config.set_main_option(
+    "sqlalchemy.url",
+    database_url,
+)
+if database_url:
+    config.set_main_option(
+        "sqlalchemy.url",
+        database_url,
+    )
 
 # Configure Python logging
 if config.config_file_name is not None:
