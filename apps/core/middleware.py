@@ -55,8 +55,9 @@ class RequestContextMiddleware(BaseHTTPMiddleware):
         response.headers["X-Process-Time"] = f"{process_time:.4f}"
 
         request_logger.info(
-            f"Completed request: "
-            f"{request.method} {request.url.path} "
+            f"API_ACCESS "
+            f"method={request.method} "
+            f"path={request.url.path} "
             f"status={response.status_code} "
             f"duration={process_time:.4f}s"
         )

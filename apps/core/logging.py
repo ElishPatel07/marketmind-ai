@@ -6,6 +6,8 @@ import sys
 
 from loguru import logger
 
+from configs.settings import settings
+
 
 def patch_request_id(record):
     """
@@ -36,7 +38,8 @@ def configure_logging():
         format=(
             "{time:YYYY-MM-DD HH:mm:ss} | {level} | {extra[request_id]} | {message}"
         ),
-        colorize=True,
+        colorize=not settings.LOG_JSON_FORMAT,
+        serialize=settings.LOG_JSON_FORMAT,
     )
 
     return patched_logger

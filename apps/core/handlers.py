@@ -37,8 +37,6 @@ def register_exception_handlers(
 
         request_logger.warning(f"Article not found: {exc.message}")
 
-        request_logger.error(f"Database operation failed: {exc.message}")
-
         return JSONResponse(
             status_code=404,
             content={

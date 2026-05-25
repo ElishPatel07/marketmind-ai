@@ -32,6 +32,7 @@ class Settings(BaseSettings):
     API_PORT: int = 8000
 
     LOG_LEVEL: str = "INFO"
+    LOG_JSON_FORMAT: bool = False
 
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str

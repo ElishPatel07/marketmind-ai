@@ -46,7 +46,7 @@ async def startup_event():
     - background scheduler initialization
     """
 
-    logger.info("Starting MarketMind AI API")
+    logger.info(f"JSON logging enabled: {settings.LOG_JSON_FORMAT}")
 
 
 # Register API routers
