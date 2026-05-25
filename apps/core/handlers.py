@@ -9,6 +9,7 @@ These handlers:
 
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
+from loguru import logger
 
 from apps.core.exceptions import (
     ArticleNotFoundException,
@@ -32,6 +33,12 @@ def register_exception_handlers(
         Handle article not found exceptions.
         """
 
+        request_logger = logger.bind(request_id=request.state.request_id)
+
+        request_logger.warning(f"Article not found: {exc.message}")
+
+        request_logger.error(f"Database operation failed: {exc.message}")
+
         return JSONResponse(
             status_code=404,
             content={
@@ -48,6 +55,9 @@ def register_exception_handlers(
         """
         Handle database operation failures.
         """
+        request_logger = logger.bind(request_id=request.state.request_id)
+
+        request_logger.error(f"Database operation failed: {exc.message}")
 
         return JSONResponse(
             status_code=500,
@@ -65,6 +75,9 @@ def register_exception_handlers(
         """
         Catch unexpected application exceptions.
         """
+
+        request_logger = logger.bind(request_id=request.state.request_id)
+        request_logger.exception("Unhandled application exception")
 
         return JSONResponse(
             status_code=500,

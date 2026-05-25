@@ -154,6 +154,20 @@ The goal is to simulate a real world AI platform similar to internal fintech res
 - Response timing headers
 - Request scoped context propagation
 
+#### Phase 1G Part 1
+- Structured logging architecture
+- Request scoped contextual logging
+- Middleware request lifecycle logging
+- Correlation ID log tracing
+- Centralized logger configuration
+
+#### Phase 1G Part 2
+- Structured exception logging
+- Contextual request linked error tracing
+- Stack trace observability
+- Centralized production diagnostics
+- Severity based logging architecture
+
 ---
 
 ## Architecture
