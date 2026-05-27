@@ -230,6 +230,13 @@ cp .env.example .env
 - Background AI pipeline orchestration
 - FastAPI async task workflows
 
+#### Phase 1J Part 2
+- Real time RSS financial news ingestion
+- Async ingestion pipeline architecture
+- Financial article normalization workflows
+- Deduplication and data quality processing
+- Structured ingestion observability
+
 ---
 
 ## Architecture
