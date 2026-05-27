@@ -223,6 +223,13 @@ cp .env.example .env
 - Failure path validation
 - Layered backend testing design
 
+#### Phase 1J Part 1
+- Async background task architecture
+- Non blocking ingestion processing
+- Structured task observability
+- Background AI pipeline orchestration
+- FastAPI async task workflows
+
 ---
 
 ## Architecture

@@ -2,7 +2,7 @@
 Production routes for financial news APIs.
 """
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, BackgroundTasks, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from apps.db.session import get_db
@@ -12,6 +12,9 @@ from apps.schemas.news import (
     NewsArticleResponse,
 )
 from apps.services import NewsService
+from apps.tasks.news_tasks import (
+    process_news_article,
+)
 
 # Router for financial news endpoints
 router = APIRouter(
@@ -25,8 +28,9 @@ router = APIRouter(
     response_model=NewsArticleResponse,
     status_code=201,
 )
-async def create_news_article(
+async def create_article(
     payload: NewsArticleCreate,
+    background_tasks: BackgroundTasks,
     db: AsyncSession = Depends(get_db),
 ):
     """
@@ -38,6 +42,9 @@ async def create_news_article(
     service = NewsService(repository)
 
     article = await service.create_article(payload)
+
+    # Add background task for processing
+    background_tasks.add_task(process_news_article, article_id=article.id)
 
     return article
 

@@ -15,6 +15,9 @@ from apps.schemas.news import (
 from apps.services.news_service import (
     NewsService,
 )
+from apps.tasks.news_tasks import (
+    process_news_article,
+)
 
 
 @pytest.mark.asyncio
@@ -71,3 +74,12 @@ async def test_create_article_service_failure():
 
     with pytest.raises(DatabaseOperationException):
         await service.create_article(payload)
+
+
+@pytest.mark.asyncio
+async def test_background_task():
+    """
+    Validate async background task execution.
+    """
+
+    await process_news_article(1)
