@@ -237,6 +237,13 @@ cp .env.example .env
 - Deduplication and data quality processing
 - Structured ingestion observability
 
+#### Phase 1J Part 3
+- Persistent financial article ingestion
+- Database level duplicate prevention
+- Historical article metadata tracking
+- Scalable RSS persistence workflows
+- Structured ingestion storage architecture
+
 ---
 
 ## Architecture

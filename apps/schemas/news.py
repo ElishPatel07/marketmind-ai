@@ -46,6 +46,10 @@ class NewsArticleCreate(BaseModel):
         description="Full article content",
     )
 
+    published_at: datetime | None = None
+
+    article_url: str | None = None
+
 
 class NewsArticleResponse(BaseModel):
     """
@@ -60,3 +64,5 @@ class NewsArticleResponse(BaseModel):
 
     # Allows conversion from ORM model -> Pydantic schema
     model_config = ConfigDict(from_attributes=True)
+    published_at: datetime | None
+    article_url: str | None

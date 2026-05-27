@@ -44,6 +44,8 @@ class NewsRepository:
             title=payload.title,
             source=payload.source,
             content=payload.content,
+            published_at=payload.published_at,
+            article_url=payload.article_url,
         )
 
         # Add ORM object to transaction
@@ -86,3 +88,17 @@ class NewsRepository:
         result = await self.db.execute(query)
 
         return list(result.scalars().all())
+
+    async def article_exists(
+        self,
+        article_url: str,
+    ):
+        """
+        Check if article already exists.
+        """
+
+        query = select(NewsArticle).where(NewsArticle.article_url == article_url)
+
+        result = await self.db.execute(query)
+
+        return result.scalar_one_or_none()

@@ -8,6 +8,7 @@ from apps.db.base import Base
 
 # Import ORM models so Alembic detects metadata
 from apps.db.models.news_article import NewsArticle  # noqa: F401
+from configs.settings import settings
 
 # Alembic configuration object
 config = context.config
@@ -15,7 +16,7 @@ config = context.config
 # Dynamically select database URL
 database_url = os.getenv(
     "TEST_DATABASE_URL",
-    os.getenv("DATABASE_URL"),
+    settings.DATABASE_URL,
 )
 
 # Alembic requires sync driver
