@@ -216,6 +216,13 @@ cp .env.example .env
 - Repository integration testing
 - Deterministic database isolation
 
+#### Phase 1I Part 3
+- Service layer testing architecture
+- Async dependency mocking
+- Business logic isolation testing
+- Failure path validation
+- Layered backend testing design
+
 ---
 
 ## Architecture

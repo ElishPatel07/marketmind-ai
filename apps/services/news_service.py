@@ -17,6 +17,7 @@ Services handle workflows.
 
 from apps.core.exceptions import (
     ArticleNotFoundException,
+    DatabaseOperationException,
 )
 from apps.repositories.news_repository import NewsRepository
 from apps.schemas.news import (
@@ -58,9 +59,11 @@ class NewsService:
         # Future business rules can live here
         # before persistence occurs
 
-        article = await self.repository.create_article(payload)
+        try:
+            return await self.repository.create_article(payload)
 
-        return article
+        except Exception as exc:
+            raise DatabaseOperationException("Failed to create article") from exc
 
     async def get_article(
         self,
