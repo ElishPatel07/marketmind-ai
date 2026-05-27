@@ -244,6 +244,13 @@ cp .env.example .env
 - Scalable RSS persistence workflows
 - Structured ingestion storage architecture
 
+#### Phase 1K Part 1
+- ChromaDB vector database integration
+- Semantic embedding generation pipelines
+- Persistent vector storage architecture
+- Transformer based semantic retrieval
+- AI powered similarity search workflows
+
 ---
 
 ## Architecture
