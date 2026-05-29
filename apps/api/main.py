@@ -16,6 +16,7 @@ from fastapi import FastAPI
 # Health check router
 from apps.api.routes.health import router as health_router
 from apps.api.routes.news import router as news_router
+from apps.api.routes.search import router as search_router
 from apps.core.handlers import register_exception_handlers
 from apps.core.logging import configure_logging
 from apps.core.middleware import RequestContextMiddleware
@@ -25,6 +26,8 @@ from configs.settings import settings
 
 # Initialize FastAPI application
 app = FastAPI(title=settings.APP_NAME, version=settings.APP_VERSION)
+
+app.include_router(search_router)
 
 app.add_middleware(RequestContextMiddleware)
 

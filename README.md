@@ -258,6 +258,13 @@ cp .env.example .env
 - Background vector generation pipelines
 - AI powered financial semantic retrieval
 
+#### Phase 1L
+- Semantic financial search API
+- ChromaDB powered retrieval endpoints
+- Vector similarity search workflows
+- Hybrid SQL and vector retrieval architecture
+- AI ready retrieval APIs
+
 ---
 
 ## Architecture
