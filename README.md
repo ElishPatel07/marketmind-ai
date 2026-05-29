@@ -265,6 +265,18 @@ cp .env.example .env
 - Hybrid SQL and vector retrieval architecture
 - AI ready retrieval APIs
 
+#### Phase 1M
+- Retrieval Augmented Generation (RAG) architecture
+- Groq Llama 3 integration
+- Context aware financial question answering
+- ChromaDB powered semantic retrieval workflows
+- Grounded AI responses using retrieved financial news
+- Centralized LLM client architecture
+- RAG service layer implementation
+- Financial intelligence query endpoint (`POST /rag/query`)
+- End to end retrieval and generation pipeline
+- Semantic search to LLM context orchestration
+
 ---
 
 ## Architecture
