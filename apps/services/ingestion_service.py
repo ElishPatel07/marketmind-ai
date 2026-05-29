@@ -15,6 +15,9 @@ from apps.repositories.news_repository import (
 from apps.schemas.news import (
     NewsArticleCreate,
 )
+from apps.vectorstore.embedding_service import (
+    EmbeddingService,
+)
 
 
 class IngestionService:
@@ -27,6 +30,8 @@ class IngestionService:
         repository: NewsRepository,
     ):
         self.repository = repository
+
+        self.embedding_service = EmbeddingService()
 
     async def ingest_articles(
         self,
@@ -66,7 +71,13 @@ class IngestionService:
             logger.info(f"Persisting article: {article['title']}")
 
             try:
-                await self.repository.create_article(payload)
+                stored_article = await self.repository.create_article(payload)
+
+                # Generate semantic embedding
+                await self.embedding_service.generate_embedding(
+                    article_id=stored_article.id,
+                    content=stored_article.content,
+                )
 
                 stored_articles += 1
 

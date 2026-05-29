@@ -38,6 +38,11 @@ class EmbeddingService:
             ids=[str(article_id)],
             embeddings=[embedding],
             documents=[content],
+            metadatas=[
+                {
+                    "article_id": article_id,
+                }
+            ],
         )
 
         logger.info(f"Stored embedding for article_id={article_id}")

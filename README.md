@@ -251,6 +251,13 @@ cp .env.example .env
 - Transformer based semantic retrieval
 - AI powered similarity search workflows
 
+#### Phase 1K Part 2
+- Automated embedding ingestion pipelines
+- Hybrid SQL and vector database architecture
+- Semantic indexing workflows
+- Background vector generation pipelines
+- AI powered financial semantic retrieval
+
 ---
 
 ## Architecture
