@@ -13,6 +13,8 @@ will be registered here.
 
 from fastapi import FastAPI
 
+from apps.api.routes.chat import router as chat_router
+
 # Health check router
 from apps.api.routes.health import router as health_router
 from apps.api.routes.news import router as news_router
@@ -31,6 +33,8 @@ app = FastAPI(title=settings.APP_NAME, version=settings.APP_VERSION)
 app.include_router(search_router)
 
 app.include_router(rag_router)
+
+app.include_router(chat_router)
 
 app.add_middleware(RequestContextMiddleware)
 

@@ -277,6 +277,15 @@ cp .env.example .env
 - End to end retrieval and generation pipeline
 - Semantic search to LLM context orchestration
 
+#### Phase 1N
+- Persistent conversation memory architecture
+- Session based chat management
+- Historical message storage in PostgreSQL
+- Multi turn financial conversations
+- Memory aware RAG workflows
+- Chat session retrieval and persistence
+- Conversational financial intelligence endpoint (`POST /chat/query`)
+
 ---
 
 ## Architecture

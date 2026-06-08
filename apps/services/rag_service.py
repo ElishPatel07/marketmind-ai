@@ -33,6 +33,7 @@ class RAGService:
     async def answer_question(
         self,
         query: str,
+        conversation_history: str = "",
     ):
         """
         Generate grounded answer.
@@ -41,18 +42,25 @@ class RAGService:
         context = await self.retrieve_context(query)
 
         prompt = f"""
-    You are MarketMind AI.
+        You are MarketMind AI.
 
-    Answer only using the supplied context.
+        Use the conversation history and
+        retrieved financial context.
 
-    Context:
+        Conversation History:
 
-    {context}
+        {conversation_history}
 
-    Question:
+        Retrieved Financial Context:
 
-    {query}
-    """
+        {context}
+
+        Question:
+
+        {query}
+
+        Answer using the retrieved context.
+        """
 
         response = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
