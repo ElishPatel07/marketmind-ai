@@ -286,23 +286,45 @@ cp .env.example .env
 - Chat session retrieval and persistence
 - Conversational financial intelligence endpoint (`POST /chat/query`)
 
+### Phase 1O
+- Groq powered market sentiment analysis
+- Bullish, bearish, and neutral article classification
+- Sentiment persistence in PostgreSQL
+- Historical sentiment backfill support
+- Intelligence service architecture
+- Automated sentiment enrichment during ingestion
+
 ---
 
 ## Architecture
 
 ```text
-                           Frontend Dashboard
-                                   │
-                                   ▼
-                            FastAPI Gateway
-                                   │
-        ┌──────────────────────────┼──────────────────────────┐
-        │                          │                          │
-        ▼                          ▼                          ▼
-   RAG Service               NLP Service            Ingestion Service
-        │                          │                          │
-        ▼                          ▼                          ▼
-   ChromaDB                  PostgreSQL                  Redis
-        │
-        ▼
-   Embedding Pipelines
+                    ┌────────────────────┐
+                    │   Frontend UI      │
+                    │  Streamlit/React   │
+                    └─────────┬──────────┘
+                              │
+                        REST/WebSocket
+                              │
+                    ┌─────────▼──────────┐
+                    │     FastAPI        │
+                    │    API Gateway     │
+                    └─────────┬──────────┘
+                              │
+        ┌─────────────────────┼─────────────────────┐
+        │                     │                     │
+        ▼                     ▼                     ▼
+┌──────────────┐    ┌────────────────┐    ┌────────────────┐
+│ RAG Service  │    │ ML/NLP Service │    │ Agent Service  │
+└──────┬───────┘    └────────┬───────┘    └──────┬─────────┘
+       │                     │                   │
+       ▼                     ▼                   ▼
+┌──────────────┐    ┌────────────────┐    ┌────────────────┐
+│ Vector DB    │    │ PostgreSQL     │    │ Redis Cache    │
+│ ChromaDB     │    │ Metadata/Data  │    │ Session Cache  │
+└──────────────┘    └────────────────┘    └────────────────┘
+
+                Data Ingestion Layer
+ ┌───────────────────────────────────────────────────┐
+ │ SEC Filings │ Yahoo Finance │ Reddit │ News RSS  │
+ └───────────────────────────────────────────────────┘

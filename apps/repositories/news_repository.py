@@ -46,6 +46,8 @@ class NewsRepository:
             content=payload.content,
             published_at=payload.published_at,
             article_url=payload.article_url,
+            sentiment=payload.sentiment,
+            sentiment_score=payload.sentiment_score,
         )
 
         # Add ORM object to transaction

@@ -50,6 +50,9 @@ class NewsArticleCreate(BaseModel):
 
     article_url: str | None = None
 
+    sentiment: str | None = None
+    sentiment_score: float | None = None
+
 
 class NewsArticleResponse(BaseModel):
     """

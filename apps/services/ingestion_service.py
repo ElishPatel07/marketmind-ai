@@ -15,6 +15,9 @@ from apps.repositories.news_repository import (
 from apps.schemas.news import (
     NewsArticleCreate,
 )
+from apps.services.intelligence_service import (
+    IntelligenceService,
+)
 from apps.vectorstore.embedding_service import (
     EmbeddingService,
 )
@@ -29,8 +32,9 @@ class IngestionService:
         self,
         repository: NewsRepository,
     ):
-        self.repository = repository
 
+        self.repository = repository
+        self.intelligence_service = IntelligenceService()
         self.embedding_service = EmbeddingService()
 
     async def ingest_articles(
@@ -60,12 +64,17 @@ class IngestionService:
             if not article["content"] or len(article["content"]) < 20:
                 continue
 
+            analysis = await self.intelligence_service.analyze_article(
+                article["content"]
+            )
+
             payload = NewsArticleCreate(
                 title=article["title"],
                 source=article["source"],
                 content=article["content"],
                 published_at=parser.parse(article["published_at"]),
                 article_url=article["link"],
+                sentiment=analysis["sentiment"],
             )
 
             logger.info(f"Persisting article: {article['title']}")
@@ -83,3 +92,7 @@ class IngestionService:
 
             except Exception as exc:
                 logger.error(f"Failed to persist article: {exc}")
+
+        logger.info(f"Persisted {stored_articles} new articles")
+
+        return stored_articles
