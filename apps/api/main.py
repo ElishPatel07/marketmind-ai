@@ -17,6 +17,7 @@ from apps.api.routes.chat import router as chat_router
 
 # Health check router
 from apps.api.routes.health import router as health_router
+from apps.api.routes.intelligence import router as intelligence_router
 from apps.api.routes.news import router as news_router
 from apps.api.routes.rag import router as rag_router
 from apps.api.routes.search import router as search_router
@@ -35,6 +36,8 @@ app.include_router(search_router)
 app.include_router(rag_router)
 
 app.include_router(chat_router)
+
+app.include_router(intelligence_router)
 
 app.add_middleware(RequestContextMiddleware)
 
