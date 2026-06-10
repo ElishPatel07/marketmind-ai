@@ -302,6 +302,14 @@ cp .env.example .env
 - Scheduled embedding generation
 - Automated sentiment enrichment
 
+### Phase 1Q
+- Health monitoring endpoints
+- Database health checks
+- System status API
+- Metrics endpoint
+- Configuration validation
+- Production readiness improvements
+
 ---
 
 ## Architecture
