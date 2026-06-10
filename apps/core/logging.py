@@ -14,8 +14,10 @@ def patch_request_id(record):
     Ensure request_id always exists.
     """
 
-    if "request_id" not in record["extra"]:
-        record["extra"]["request_id"] = "system"
+    record["extra"].setdefault(
+        "request_id",
+        "system",
+    )
 
     return record
 
@@ -25,21 +27,14 @@ def configure_logging():
     Configure structured application logging.
     """
 
-    # Remove default logger
     logger.remove()
 
-    # Patch logger records globally
-    patched_logger = logger.patch(patch_request_id)
-
-    # Console logger configuration
-    patched_logger.add(
+    logger.add(
         sys.stdout,
         level=("DEBUG" if settings.APP_ENV == "development" else "INFO"),
-        format=(
-            "{time:YYYY-MM-DD HH:mm:ss} | {level} | {extra[request_id]} | {message}"
-        ),
-        colorize=not settings.LOG_JSON_FORMAT,
-        serialize=settings.LOG_JSON_FORMAT,
+        format=("{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}"),
+        colorize=(not settings.LOG_JSON_FORMAT),
+        serialize=(settings.LOG_JSON_FORMAT),
     )
 
-    return patched_logger
+    return logger

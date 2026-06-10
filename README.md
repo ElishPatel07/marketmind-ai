@@ -294,6 +294,14 @@ cp .env.example .env
 - Intelligence service architecture
 - Automated sentiment enrichment during ingestion
 
+### Phase 1P
+- Automated news ingestion scheduler
+- APScheduler integration
+- Background intelligence workflows
+- Hourly market data refresh
+- Scheduled embedding generation
+- Automated sentiment enrichment
+
 ---
 
 ## Architecture

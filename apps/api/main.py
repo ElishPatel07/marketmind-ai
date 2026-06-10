@@ -24,6 +24,7 @@ from apps.api.routes.search import router as search_router
 from apps.core.handlers import register_exception_handlers
 from apps.core.logging import configure_logging
 from apps.core.middleware import RequestContextMiddleware
+from apps.scheduler.scheduler import start_scheduler
 
 # Typed application settings loaded from environment variables
 from configs.settings import settings
@@ -60,6 +61,8 @@ async def startup_event():
     """
     logger.info(f"Application environment: {settings.APP_ENV}")
     logger.info(f"JSON logging enabled: {settings.LOG_JSON_FORMAT}")
+
+    start_scheduler()
 
 
 # Register API routers
