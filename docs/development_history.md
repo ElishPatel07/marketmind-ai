@@ -121,9 +121,45 @@ Completed platform capabilities:
 - Opportunity analysis
 - Market outlook generation
 
-## Phase 2A.1
+## Phase 2A Part 1
 - Structured research output
 - JSON based agent responses
 - LLM output parsing and validation
 - Research schemas
 - Agent ready report format
+
+## Phase 2B Part 1
+
+- Portfolio model
+- Portfolio holdings model
+- Portfolio repository
+- Portfolio service
+- Portfolio APIs
+- Portfolio persistence
+
+## Phase 2B Part 2
+
+- Portfolio intelligence workflows
+- Portfolio report generation
+- Research Agent integration
+- Holding level analysis
+- Portfolio outlook generation
+- Portfolio risk identification
+- Portfolio opportunity analysis
+
+## Completed platform capabilities:
+
+- Automated financial news ingestion
+- PostgreSQL persistence
+- ChromaDB vector search
+- Groq powered RAG
+- Conversation memory
+- Market sentiment analysis
+- Scheduled intelligence workflows
+- Production monitoring APIs
+- AI research agent
+- Structured research reports
+- Portfolio management
+- Portfolio intelligence reports
+- Portfolio risk analysis
+- Portfolio opportunity analysis

@@ -14,11 +14,10 @@ will be registered here.
 from fastapi import FastAPI
 
 from apps.api.routes.chat import router as chat_router
-
-# Health check router
 from apps.api.routes.health import router as health_router
 from apps.api.routes.intelligence import router as intelligence_router
 from apps.api.routes.news import router as news_router
+from apps.api.routes.portfolio import router as portfolio_router
 from apps.api.routes.rag import router as rag_router
 from apps.api.routes.research import router as research_router
 from apps.api.routes.search import router as search_router
@@ -40,6 +39,7 @@ app.include_router(chat_router)
 app.include_router(intelligence_router)
 app.include_router(system_router)
 app.include_router(research_router)
+app.include_router(portfolio_router)
 app.add_middleware(RequestContextMiddleware)
 
 logger = configure_logging()

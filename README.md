@@ -11,12 +11,14 @@ MarketMind automatically ingests financial news, performs sentiment analysis, ge
 - Semantic search using vector embeddings
 - Retrieval Augmented Generation (RAG)
 - Multi turn conversational memory
-- ChromaDB vector database integration
-- Groq Llama 3.3 powered intelligence
-- Automated background ingestion workflows
 - AI research agent
-- Structured market research reports
-- Health monitoring and metrics APIs
+- Structured research reports
+- Portfolio management
+- Portfolio intelligence reports
+- Portfolio risk analysis
+- Portfolio opportunity analysis
+- Automated background ingestion
+- Health monitoring and metrics
 
 ## Architecture
 
@@ -29,18 +31,15 @@ Financial News Sources
           ▼
      PostgreSQL
           │
- ┌────────┴────────┐
- ▼                 ▼
-ChromaDB      Sentiment AI
- ▼                 ▼
-Semantic      Market Signals
+ ┌────────┼──────────┬──────────┐
+ ▼        ▼          ▼          ▼
+ChromaDB  Sentiment  Research   Portfolio
+ ▼                   Agent      Intelligence
+Semantic
 Search
-      │
-      ▼
-   RAG Engine
-      │
-      ▼
- FastAPI APIs
+   │
+   ▼
+FastAPI
 ```
 
 ## Tech Stack
@@ -105,6 +104,21 @@ Generate AI powered market research reports with:
 - Risks
 - Opportunities
 - Market outlook
+
+### Portfolio
+
+POST /portfolio
+
+Create investment portfolios.
+
+GET /portfolio/{portfolio_id}/report
+
+Generate portfolio intelligence reports including:
+
+- Portfolio outlook
+- Portfolio risks
+- Portfolio opportunities
+- AI generated portfolio research
 
 ## Local Setup
 
