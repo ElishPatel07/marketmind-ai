@@ -17,7 +17,9 @@ MarketMind automatically ingests financial news, performs sentiment analysis, ge
 - Portfolio intelligence reports
 - Portfolio risk analysis
 - Portfolio opportunity analysis
-- Automated background ingestion
+- Automated market alerts
+- Event driven intelligence workflows
+- Background scheduling and automation
 - Health monitoring and metrics
 
 ## Architecture
@@ -31,15 +33,15 @@ Financial News Sources
           ▼
      PostgreSQL
           │
- ┌────────┼──────────┬──────────┐
- ▼        ▼          ▼          ▼
-ChromaDB  Sentiment  Research   Portfolio
+ ┌────────┼──────────┬──────────┬─────────────┐
+ ▼        ▼          ▼          ▼             ▼
+ChromaDB  Sentiment  Research   Portfolio     Alerts
  ▼                   Agent      Intelligence
 Semantic
 Search
-   │
-   ▼
-FastAPI
+          │
+          ▼
+      FastAPI
 ```
 
 ## Tech Stack
@@ -120,6 +122,18 @@ Generate portfolio intelligence reports including:
 - Portfolio opportunities
 - AI generated portfolio research
 
+### Alerts
+
+GET /alerts
+
+Retrieve generated market alerts.
+
+Alert Types:
+
+- Bearish sentiment alerts
+- Portfolio related market events
+- Intelligence driven market signals
+
 ## Local Setup
 
 ```bash
@@ -149,15 +163,24 @@ make check
 
 ## Roadmap
 
-### Phase 2
+## Completed
 
-* Autonomous research agents
-* Portfolio intelligence
-* Daily market reports
-* Market alerts
-* Multi agent analysis
-* Company monitoring
-* Sector intelligence
+- News ingestion
+- Semantic search
+- Retrieval augmented generation
+- Conversation memory
+- Market sentiment analysis
+- Research agent
+- Portfolio intelligence
+- Automated market alerts
+
+## Planned
+
+- Daily market reports
+- Company intelligence
+- Multi-agent orchestration
+- Portfolio monitoring rules
+- Sector intelligence
 
 ## License
 

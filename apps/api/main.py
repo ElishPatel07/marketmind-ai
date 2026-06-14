@@ -13,6 +13,7 @@ will be registered here.
 
 from fastapi import FastAPI
 
+from apps.api.routes.alerts import router as alerts_router
 from apps.api.routes.chat import router as chat_router
 from apps.api.routes.health import router as health_router
 from apps.api.routes.intelligence import router as intelligence_router
@@ -40,6 +41,7 @@ app.include_router(intelligence_router)
 app.include_router(system_router)
 app.include_router(research_router)
 app.include_router(portfolio_router)
+app.include_router(alerts_router)
 app.add_middleware(RequestContextMiddleware)
 
 logger = configure_logging()

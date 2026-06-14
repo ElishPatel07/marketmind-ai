@@ -5,22 +5,13 @@ Financial news ingestion service.
 from dateutil import parser
 from loguru import logger
 
-from apps.ingestion.rss_ingestion import (
-    deduplicate_articles,
-    fetch_rss_articles,
-)
-from apps.repositories.news_repository import (
-    NewsRepository,
-)
-from apps.schemas.news import (
-    NewsArticleCreate,
-)
-from apps.services.intelligence_service import (
-    IntelligenceService,
-)
-from apps.vectorstore.embedding_service import (
-    EmbeddingService,
-)
+from apps.ingestion.rss_ingestion import deduplicate_articles, fetch_rss_articles
+from apps.repositories.alert_repository import AlertRepository
+from apps.repositories.news_repository import NewsRepository
+from apps.schemas.news import NewsArticleCreate
+from apps.services.alert_service import AlertService
+from apps.services.intelligence_service import IntelligenceService
+from apps.vectorstore.embedding_service import EmbeddingService
 
 
 class IngestionService:
@@ -36,6 +27,7 @@ class IngestionService:
         self.repository = repository
         self.intelligence_service = IntelligenceService()
         self.embedding_service = EmbeddingService()
+        self.alert_service = AlertService(AlertRepository(repository.db))
 
     async def ingest_articles(
         self,
@@ -67,6 +59,13 @@ class IngestionService:
             analysis = await self.intelligence_service.analyze_article(
                 article["content"]
             )
+
+            await self.alert_service.generate_sentiment_alert(
+                ticker="MARKET",
+                sentiment=analysis["sentiment"],
+            )
+
+            print(f"Alert check: {analysis['sentiment']}")
 
             payload = NewsArticleCreate(
                 title=article["title"],

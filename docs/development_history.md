@@ -147,7 +147,18 @@ Completed platform capabilities:
 - Portfolio risk identification
 - Portfolio opportunity analysis
 
-## Completed platform capabilities:
+## Phase 2C
+
+- Alert data model
+- Alert repository
+- Alert service
+- Sentiment based alert generation
+- Alert API endpoints
+- Alert persistence
+- Event driven intelligence workflows
+- Ingestion pipeline integration
+
+Completed platform capabilities:
 
 - Automated financial news ingestion
 - PostgreSQL persistence
@@ -163,3 +174,5 @@ Completed platform capabilities:
 - Portfolio intelligence reports
 - Portfolio risk analysis
 - Portfolio opportunity analysis
+- Automated market alerts
+- Event driven intelligence workflows
